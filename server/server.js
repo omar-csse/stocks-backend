@@ -1,15 +1,16 @@
 require('dotenv').config()
 const express = require('express');
-const app = express();
 const helmet = require('helmet')
+const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
 const port = process.env.PORT || 4000;
 const localhost = 'http://localhost';
 
+const app = express();
 app.set('json spaces', 4)
-app.use(helmet(), compression(), bodyParser.json());
+app.use(helmet(), compression(), bodyParser.json(), morgan('tiny'));
 app.use(express.urlencoded({extended: true}));
 
 
