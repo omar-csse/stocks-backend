@@ -1,18 +1,26 @@
-const MongoClient = require('mongodb').MongoClient
+const mysql = require('mysql2');
 
-class ChattyDB {
+
+class StocksDB {
     static async connectToDB() {
-        return await MongoClient.connect(this.url, {useNewUrlParser: true}, this.options)
-            .then(client => {this.db = client.db(process.env.DB_NAME)})
-            .catch(err => console.log(err));
+        try {
+            this.db = mysql.createPool(this.ConnectionInfo);
+            await this.db.getConnection((err) => console.log(`💽  StocksDB: ${err ? err.sqlMessage : "is connected"}`))
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 
-ChattyDB.db = null
-ChattyDB.url = process.env.DB_URI
-ChattyDB.options = {
-    bufferMaxEntries: 0,
-    reconnectTries: 5000,
+
+StocksDB.db = null
+StocksDB.ConnectionInfo = {
+    connectionLimit : 10,
+    host : process.env.DB_HOST,
+    user : process.env.DB_USER,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME
 }
 
-module.exports = ChattyDB;
+
+module.exports = StocksDB;

@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const apiRoute = require('../routes/api/main')
 
+const StocksDB = require('../config/db');
+
 const port = process.env.PORT || 4000;
 const localhost = 'http://localhost';
 
@@ -17,8 +19,9 @@ app.use(express.urlencoded({extended: true}));
 app.use('/api', apiRoute)
 
 
-const main = () => {
+const main = async () => {
     app.listen(port);
+    await StocksDB.connectToDB();
     return console.debug(`🚀  Server listening on ${localhost}:${port}`);
 }
 
