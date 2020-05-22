@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const apiRoute = require('../routes/api/main')
+const stocksRoute = require('../routes/stocks/stocks')
 
 const StocksDB = require('../config/db');
 
@@ -13,10 +14,13 @@ const localhost = 'http://localhost';
 
 
 const app = express();
-app.set('json spaces', 4)
 app.use(helmet(), compression(), bodyParser.json(), morgan('tiny'));
 app.use(express.urlencoded({extended: true}));
+
+
+/* Routes */
 app.use('/api', apiRoute)
+app.use('/stocks', stocksRoute)
 
 
 const main = async () => {
