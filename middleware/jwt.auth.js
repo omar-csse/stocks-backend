@@ -1,17 +1,20 @@
 const jwt = require('jsonwebtoken');
+const err = require('../models/errors')
 
 
 module.exports = jwtAuth = (req, res, next) => {
 
-    const token = req.cookies.__sesjidt_;
+    try {
+        const token = authorization.split(" ")[1];
+        jwt.verify(token, process.env.JWTSECRET, (err, payload) => {
+            if (err) next()
+            req.email = payload.email;
+        });
+    } catch (error) {
+        req.err = err.err_403_authed_symbol1
+        next()
+    }
 
-    if (!token) return next();
-    
-    jwt.verify(token, process.env.SECRET, (err, payload) => {
-        if (err) return next();
-        req.username = payload.username;
-    }); 
-
-    req.loggedIn = true;
-    return next()
+    req.loggedIn = true
+    next()
 }

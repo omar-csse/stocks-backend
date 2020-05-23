@@ -4,7 +4,7 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
-const apiRouter = require('../routes/api/main')
+const apiRouter = require('../routes/api/api')
 const stocksRouter = require('../routes/stocks/stocks')
 
 const StocksDB = require('../config/db');

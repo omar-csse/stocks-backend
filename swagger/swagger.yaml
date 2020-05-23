@@ -217,7 +217,7 @@ paths:
                     example: true
                   message:
                     type: string
-                    example: Parameters allowed are 'from' and 'to', example /stocks/authed/AAL?from=2020-03-15
+                    example: Invalid date, parameters allowed are 'from' and 'to', example /stocks/authed/AAL?from=2020-03-15
         "403":
           description: Access denied
           content:

@@ -1,13 +1,13 @@
 const router = require('express').Router();
 const getStocks = require('../../db/getStocks')
 const getLastStockRecord = require('../../db/getLastStockRecord')
-const helper = require('../../models/helper')
+const h = require('../../models/helper')
 const err = require('../../models/errors')
 
 
 router.get('/', async (req, res) => {
     try {
-        if (helper.validQuery(req.query)) {
+        if (h.validIndustry(req.query)) {
             rows = await getStocks(req.query.industry || '')
             rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_stocks)
         } 

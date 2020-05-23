@@ -32,12 +32,17 @@ const err_404_authed_symbol = {
 
 const err_400_authed_symbol = {
     "error": true,
-    "message": "Parameters allowed are 'from' and 'to', example /stocks/authed/AAL?from=2020-03-15"
+    "message": "Invalid date, parameters allowed are 'from' and 'to', example /stocks/authed/AAL?from=2020-03-15"
 }
 
-const err_403_authed_symbol = {
+const err_403_authed_symbol1 = {
     "error": true,
     "message": "Authorization header not found"
+}
+
+const err_403_authed_symbol2 = {
+    "error": true,
+    "message": "Invalid Token"
 }
 
 
@@ -49,5 +54,6 @@ module.exports = {
     err_400_symbol,
     err_404_authed_symbol,
     err_400_authed_symbol,
-    err_403_authed_symbol
+    err_403_authed_symbol1,
+    err_403_authed_symbol2,
 }
