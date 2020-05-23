@@ -14,6 +14,7 @@ router.get('/symbols', async (req, res) => {
             res.status(400).send(err.err_400_stocks)
         }
     } catch (error) {
+        console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
         res.status(502).send(err.err_502_db)
     }
 })

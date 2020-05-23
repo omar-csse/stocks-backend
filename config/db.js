@@ -7,7 +7,7 @@ class StocksDB {
             this.db = mysql.createPool(this.ConnectionInfo);
             await this.db.getConnection((err) => console.log(`💽  StocksDB: ${err ? err.sqlMessage : "is connected"}`))
         } catch (error) {
-            console.log(error)
+            console.log(`💽  StocksDB: ${error}`)
         }
     }
 }
