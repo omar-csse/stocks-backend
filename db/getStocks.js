@@ -8,4 +8,6 @@ const getStocks = async (industry) => {
 }
 
 
-module.exports = getStocks;
+module.exports = {
+    getStocks
+}
