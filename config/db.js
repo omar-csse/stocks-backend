@@ -3,14 +3,10 @@ const mysql = require('mysql2/promise');
 
 class StocksDB {
     static async connectToDB() {
-        try {
-            this.db = mysql.createPool(this.ConnectionInfo);
-            this.db.getConnection()
-                .then(_ => console.log(`💽  StocksDB: is connected`))
-                .catch(err => console.log(`💽  StocksDB: ${err.message}`))            
-        } catch (error) {
-            console.log(`💽  StocksDB: ${error}`)
-        }
+        this.db = mysql.createPool(this.ConnectionInfo);
+        await this.db.getConnection()
+            .then(_ => console.log(`💽  StocksDB: is connected`))
+            .catch(err => console.log(`💽  StocksDB: ${err.message}`))            
     }
 }
 
