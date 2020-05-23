@@ -4,8 +4,10 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
+
 const apiRouter = require('../routes/api/api')
 const stocksRouter = require('../routes/stocks/stocks')
+const userRouter = require('../routes/user/user')
 
 const StocksDB = require('../config/db');
 
@@ -21,6 +23,7 @@ app.use(express.urlencoded({extended: true}));
 /* Routes */
 app.use('/api', apiRouter)
 app.use('/stocks', stocksRouter)
+app.use('/user', userRouter)
 
 
 const main = async () => {
