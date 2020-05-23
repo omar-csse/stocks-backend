@@ -4,8 +4,8 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
-const apiRoute = require('../routes/api/main')
-const stocksRoute = require('../routes/stocks/stocks')
+const apiRouter = require('../routes/api/main')
+const stocksRouter = require('../routes/stocks/stocks')
 
 const StocksDB = require('../config/db');
 
@@ -19,8 +19,8 @@ app.use(express.urlencoded({extended: true}));
 
 
 /* Routes */
-app.use('/api', apiRoute)
-app.use('/stocks', stocksRoute)
+app.use('/api', apiRouter)
+app.use('/stocks', stocksRouter)
 
 
 const main = async () => {
