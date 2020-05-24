@@ -47,7 +47,7 @@ const err_403_authed_symbol2 = {
 
 const err_400_register = {
     "error": true,
-    "message": "Request body incomplete - email and password needed"
+    "message": "Request body incomplete - a valid email and password needed"
 }
 
 const err_409_register = {

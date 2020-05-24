@@ -288,7 +288,7 @@ paths:
                     example: true
                   message:
                     type: string
-                    example: Request body incomplete - email and password needed
+                    example: Request body incomplete - a valid email and password needed
         "409":
           description: User already exists
           content:
