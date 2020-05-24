@@ -7,13 +7,15 @@ const err = require('../../models/errors')
 
 router.get('/', async (req, res) => {
     try {
-        if (h.validIndustry(req.query)) {
-            rows = await getStocks(req.query.industry || '')
-            rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_stocks)
-        } 
-        else {
+        
+        if (!h.validIndustry(req.query)) {
             res.status(400).send(err.err_400_stocks)
-        }
+            return;
+        } 
+
+        rows = await getStocks(req.query.industry || '')
+        rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_stocks)
+
     } catch (error) {
         console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
         res.status(502).send(err.err_502_db)
@@ -23,13 +25,15 @@ router.get('/', async (req, res) => {
 
 router.get('/:symbol' , async (req, res) => {
     try {
-        if (Object.keys(req.query).length === 0) {
-            rows = await getLastStockRecord(req.params.symbol)
-            rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_symbol)
-        } 
-        else {
+
+        if (Object.keys(req.query).length > 0) {
             res.status(400).send(err.err_400_symbol)
-        }
+            return;
+        } 
+
+        rows = await getLastStockRecord(req.params.symbol)
+        rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_symbol)
+
     } catch (error) {
         console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
         res.status(502).send(err.err_502_db)
