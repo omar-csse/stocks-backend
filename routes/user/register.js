@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 
         users = await getUser(req.body.email)
         if (users.length > 0) {
-            res.status(404).send(err.err_409_register)
+            res.status(409).send(err.err_409_register)
             return;
         }
 
