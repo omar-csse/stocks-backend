@@ -1,7 +1,7 @@
 const router = require('express').Router();
+const bcrypt = require('bcrypt')
 const getUser = require('../../db/getUser')
 const addUser = require('../../db/addUser')
-const bcrypt = require('bcrypt')
 const h = require('../../models/helper')
 const err = require('../../models/errors')
 
