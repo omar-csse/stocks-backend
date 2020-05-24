@@ -9,7 +9,7 @@ const err = require('../../models/errors')
 router.post('/', async (req, res) => {
     try {
         if (!h.validCredentials(req.body)) {
-            res.status(400).send(err.err_400_register)
+            res.status(400).send(err.err_400_auth)
             return;
         } 
 

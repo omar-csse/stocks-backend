@@ -45,7 +45,7 @@ const err_403_authed_symbol2 = {
     "message": "Invalid Token"
 }
 
-const err_400_register = {
+const err_400_auth = {
     "error": true,
     "message": "Request body incomplete - a valid email and password needed"
 }
@@ -53,6 +53,11 @@ const err_400_register = {
 const err_409_register = {
     "error": true,
     "message": "User already exists!"
+}
+
+const err_401_login = {
+    "error": true,
+    "message": "Incorrect email or password"
 }
 
 
@@ -66,6 +71,7 @@ module.exports = {
     err_400_authed_symbol,
     err_403_authed_symbol1,
     err_403_authed_symbol2,
-    err_400_register,
+    err_400_auth,
     err_409_register,
+    err_401_login,
 }
