@@ -1,3 +1,4 @@
+const validator = require("email-validator");
 
 
 const validIndustry = (query) => {
@@ -21,6 +22,13 @@ const validDate = (query) => {
     return true; 
 }
 
+const validCredentials = (body) => {
+    const password = body.password
+    const email = body.email
+    if (email && validator.validate(email) && password && password.length > 0) return true
+    return false; 
+}
+
 const tstamp = (date) => {
     return Date.parse(date) / 1000
 }
@@ -29,5 +37,6 @@ const tstamp = (date) => {
 module.exports = {
     validIndustry,
     validDate,
+    validCredentials,
     tstamp
 }

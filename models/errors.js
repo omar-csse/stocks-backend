@@ -45,6 +45,16 @@ const err_403_authed_symbol2 = {
     "message": "Invalid Token"
 }
 
+const err_400_register = {
+    "error": true,
+    "message": "Request body incomplete - email and password needed"
+}
+
+const err_409_register = {
+    "error": true,
+    "message": "User already exists!"
+}
+
 
 module.exports = {
     err_502_db,
@@ -56,4 +66,6 @@ module.exports = {
     err_400_authed_symbol,
     err_403_authed_symbol1,
     err_403_authed_symbol2,
+    err_400_register,
+    err_409_register,
 }

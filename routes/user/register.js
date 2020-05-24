@@ -1,10 +1,32 @@
 const router = require('express').Router();
+const getUser = require('../../db/getUser')
+const addUser = require('../../db/addUser')
+const bcrypt = require('bcrypt')
 const h = require('../../models/helper')
 const err = require('../../models/errors')
 
 
-router.get('/', (req, res) => {
-    res.send('register')
+router.post('/', async (req, res) => {
+    try {
+        if (!h.validCredentials(req.body)) {
+            res.status(400).send(err.err_400_register)
+            return;
+        } 
+
+        users = await getUser(req.body.email)
+        if (users.length > 0) {
+            res.status(404).send(err.err_409_register)
+            return;
+        }
+
+        const hash = await bcrypt.hash(req.body.password, 10)
+        await addUser(req.body.email, hash)
+        res.status(201).send({"success": true, "message": "User created"})
+
+    } catch (error) {
+        console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
+        res.status(502).send(err.err_502_db)
+    }
 })
 
 
