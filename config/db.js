@@ -8,6 +8,13 @@ class StocksDB {
             .then(_ => console.log(`💽  StocksDB: is connected`))
             .catch(err => console.log(`💽  StocksDB: ${err.message}`))            
     }
+
+    static async createUsersTabel() {
+        const query = "CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR(60) NOT NULL UNIQUE, password VARCHAR(60) NOT NULL)";
+        await this.db.execute(query)
+            .then(_ => console.log(`💽  StocksDB: users table created`))
+            .catch(err => console.log(`💽  StocksDB: ${err.message}`))
+    }
 }
 
 

@@ -29,6 +29,7 @@ app.use('/user', userRouter)
 const main = async () => {
     app.listen(port);
     await StocksDB.connectToDB();
+    await StocksDB.createUsersTabel()
     return console.debug(`🚀  Server listening on ${localhost}:${port}`);
 }
 
