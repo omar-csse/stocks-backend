@@ -4,6 +4,7 @@ const authedRouter = require('./authed')
 const getLastStockRecord = require('../../db/getLastStockRecord')
 const err = require('../../models/errors')
 
+
 router.use('/symbols', symbolsRouter)
 router.use('/authed', authedRouter)
 
