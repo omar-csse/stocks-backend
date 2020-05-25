@@ -18,7 +18,7 @@ router.get('/:symbol' , async (req, res) => {
         } 
 
         rows = await getLastStockRecord(req.params.symbol)
-        rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_symbol)
+        rows.length > 0 ? res.send(rows[0]) : res.status(404).send(err.err_404_symbol)
 
     } catch (error) {
         console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
