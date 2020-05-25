@@ -11,7 +11,7 @@ const userRouter = require('../routes/user/user')
 
 const StocksDB = require('../config/db');
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 const localhost = 'http://localhost';
 
 
