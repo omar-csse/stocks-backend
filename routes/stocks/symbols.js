@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const getStocks = require('../../db/getStocks')
-const getLastStockRecord = require('../../db/getLastStockRecord')
 const h = require('../../models/helper')
 const err = require('../../models/errors')
 
