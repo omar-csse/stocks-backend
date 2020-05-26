@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express');
 const https = require('https')
 const fs = require('fs')
-const path = require('path')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
@@ -19,8 +18,8 @@ const localhost = 'https://localhost';
 
 
 const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname + '/../sslcert/cert.key'), 'utf8'),
-    cert: fs.readFileSync(path.join(__dirname + '/../sslcert/cert.pem'), 'utf8')
+    key: fs.readFileSync('/etc/ssl/private/node-stocks.key', 'utf8'),
+    cert: fs.readFileSync('/etc/ssl/certs/node-stocks.crt', 'utf8')
 }
 
 
