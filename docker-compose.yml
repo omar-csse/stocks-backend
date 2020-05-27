@@ -18,9 +18,9 @@ services:
       - db
   db:
     volumes:
-      - ./config/:/docker-entrypoint-initdb.d/
+      - ./sql:/docker-entrypoint-initdb.d
       - dbdata:/data/db
-    build: ./config
+    image: mysql
     restart: always
     env_file: .env
     environment: 
