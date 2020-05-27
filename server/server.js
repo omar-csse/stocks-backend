@@ -14,14 +14,8 @@ const userRouter = require('../routes/user/user')
 
 const StocksDB = require('../config/db');
 
-const port = process.env.PORT || 443;
-const localhost = 'https://localhost';
-
-
-const httpsOptions = {
-    key: fs.readFileSync(path.join(__dirname + '/../sslcert/cert.key'), 'utf8'),
-    cert: fs.readFileSync(path.join(__dirname + '/../sslcert/cert.pem'), 'utf8')
-}
+const port = process.env.PORT || 3000;
+const localhost = 'http://localhost';
 
 
 const app = express();
@@ -36,7 +30,7 @@ app.use('/user', userRouter)
 
 
 const main = async () => {
-    https.createServer(httpsOptions, app).listen(port)
+    app.listen(port)
     await StocksDB.connectToDB();
     await StocksDB.createUsersTabel()
     return console.debug(`🚀  Server listening on ${localhost}:${port}`);
