@@ -25,6 +25,9 @@ app.use('/api', apiRouter)
 app.use('/stocks', stocksRouter)
 app.use('/user', userRouter)
 
+/* Handle favicon.ico */
+app.get('/favicon.ico', (req, res) => res.status(204));
+
 
 const main = async () => {
     app.listen(port)
