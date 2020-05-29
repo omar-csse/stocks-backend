@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const https = require('https')
 const fs = require('fs')
+const cors = require('cors')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
@@ -16,7 +17,6 @@ const StocksDB = require('../config/db');
 const port = process.env.PORT || 443;
 const localhost = 'https://localhost';
 
-
 const httpsOptions = {
     key: fs.readFileSync('/etc/ssl/private/node-stocks.key', 'utf8'),
     cert: fs.readFileSync('/etc/ssl/certs/node-stocks.crt', 'utf8')
@@ -24,7 +24,7 @@ const httpsOptions = {
 
 
 const app = express();
-app.use(helmet(), compression(), bodyParser.json(), morgan('tiny'));
+app.use(cors(), helmet(), compression(), bodyParser.json(), morgan('tiny'));
 app.use(express.urlencoded({extended: true}));
 
 
