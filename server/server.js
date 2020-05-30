@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express');
+const cors = require('cors')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
@@ -15,7 +16,7 @@ const localhost = 'http://localhost';
 
 
 const app = express();
-app.use(helmet(), compression(), bodyParser.json(), morgan('tiny'));
+app.use(cors(), helmet(), compression(), bodyParser.json(), morgan('tiny'));
 app.use(express.urlencoded({extended: true}));
 
 
