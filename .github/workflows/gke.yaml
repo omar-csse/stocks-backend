@@ -52,5 +52,4 @@ jobs:
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
         kubectl set image deployment $DEPLOYMENT_NAME $DEPLOYMENT_NAME=$REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$IMAGE_TAG
         kubectl rollout status deployment/$DEPLOYMENT_NAME
-        kubectl get services -o wide
 
