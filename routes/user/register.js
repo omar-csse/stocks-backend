@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
         res.status(201).send({"success": true, "message": "User created"})
 
     } catch (error) {
-        console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
+        console.log(`💽  StocksDB: ${error.sqlMessage || error}`)
         res.status(502).send(err.err_502_db)
     }
 })

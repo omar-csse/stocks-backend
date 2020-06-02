@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         rows.length > 0 ? res.send(rows) : res.status(404).send(err.err_404_stocks)
 
     } catch (error) {
-        console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
+        console.log(`💽  StocksDB: ${error.sqlMessage || error}`)
         res.status(502).send(err.err_502_db)
     }
 })
