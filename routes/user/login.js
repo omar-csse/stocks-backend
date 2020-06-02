@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         match ? res.status(200).send(createToken(users[0].email)) : res.status(401).send(err.err_401_login)
 
     } catch (error) {
-        console.log(`💽  StocksDB: ${error.sqlMessage || 'Error'}`)
+        console.log(`💽  StocksDB: ${error.sqlMessage || error}`)
         res.status(502).send(err.err_502_db)
     }
 })
