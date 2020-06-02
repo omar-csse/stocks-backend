@@ -73,7 +73,7 @@ paths:
                     example: Industry sector not found
   /stocks/{symbol}:
     get:
-      summary: Returns the latest entry for a particular stock searched by symbol (1-5 upper case letters).  
+      summary: Returns the latest entry for a particular stock searched by symbol (1-5 letters).  
       tags: [Queries]
       parameters:
         - in: path
