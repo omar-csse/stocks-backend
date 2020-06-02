@@ -4,12 +4,12 @@ services:
     image: gcr.io/omar-0/stocks-backend:1.0
     build: .
     restart: on-failure
-    env_file: .env
+    # env_file: .env
     environment: 
-      DB_HOST: ${{ secrets.DB_HOST }}
-      DB_USER: ${{ secrets.DB_USER }}
-      DB_NAME: ${{ secrets.DB_NAME }}
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      DB_HOST: $DB_HOST
+      DB_USER: $DB_USER
+      DB_NAME: $DB_NAME
+      DB_PASSWORD: $DB_PASSWORD
     ports:
       - '3000:3000'
     networks:
@@ -22,11 +22,11 @@ services:
       - dbdata:/data/db
     image: mysql
     restart: always
-    env_file: .env
+    # env_file: .env
     environment: 
-      MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
-      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-      MYSQL_USER: ${{ secrets.MYSQL_USER }}
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_USER: $MYSQL_USER
     ports: 
       - '3306:3306'
     networks:
