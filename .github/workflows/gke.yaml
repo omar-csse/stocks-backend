@@ -49,7 +49,7 @@ jobs:
       run: |
         export DB_HOST=$DB_HOST DB_USER=$DB_USER DB_PASSWORD=$DB_PASSWORD DB_NAME=$DB_NAME
         export MYSQL_DATABASE=$MYSQL_DATABASE MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD MYSQL_USER=$MYSQL_USER    
-        docker-compose up --build
+        docker-compose up --build -d
 
     # Build the Docker image
     - name: Test
