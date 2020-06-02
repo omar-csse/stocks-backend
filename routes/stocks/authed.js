@@ -12,6 +12,9 @@ router.get('/:symbol', jwtAuth, async (req, res) => {
             res.status(403).send(req.err || err.err_403_authed_symbol2)
             return;
         }
+        if (!h.validSymbol(req.params)) {
+            res.status(400).send(err.err_404_symbol2)
+        }
         if (!h.validDate(req.query)) {
             res.status(400).send(err.err_400_authed_symbol)
             return;

@@ -3,6 +3,7 @@ const symbolsRouter = require('./symbols')
 const authedRouter = require('./authed')
 const getLastStockRecord = require('../../db/getLastStockRecord')
 const err = require('../../models/errors')
+const h = require('../../models/helper')
 
 
 router.use('/symbols', symbolsRouter)
@@ -16,6 +17,9 @@ router.get('/:symbol' , async (req, res) => {
             res.status(400).send(err.err_400_symbol)
             return;
         } 
+        if (!h.validSymbol(req.params)) {
+            res.status(400).send(err.err_404_symbol2)
+        }
 
         rows = await getLastStockRecord(req.params.symbol)
         rows.length > 0 ? res.send(rows[0]) : res.status(404).send(err.err_404_symbol)

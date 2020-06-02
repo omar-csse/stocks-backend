@@ -29,6 +29,10 @@ const validCredentials = (body) => {
     return false; 
 }
 
+const validSymbol = (body) => {
+    return /^([a-zA-Z]){1,5}$/.test(body.symbol);
+}
+
 const tstamp = (date) => {
     return Date.parse(date) / 1000
 }
@@ -38,5 +42,6 @@ module.exports = {
     validIndustry,
     validDate,
     validCredentials,
+    validSymbol,
     tstamp
 }
