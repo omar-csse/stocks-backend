@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
+const apiRouter = require('../routes/api/api')
 const stocksRouter = require('../routes/stocks/stocks')
 const userRouter = require('../routes/user/user')
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 /* Routes */
+app.use('/', apiRouter)
 app.use('/stocks', stocksRouter)
 app.use('/user', userRouter)
 
