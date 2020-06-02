@@ -18,7 +18,7 @@ router.get('/:symbol' , async (req, res) => {
             return;
         } 
         if (!h.validSymbol(req.params)) {
-            res.status(400).send(err.err_404_symbol2)
+            res.status(400).send(err.err_400_symbol2)
             return;
         }
 
