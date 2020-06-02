@@ -18,8 +18,8 @@ const port = process.env.PORT || 443;
 const localhost = 'https://localhost';
 
 const httpsOptions = {
-    key: fs.readFileSync('/etc/ssl/private/node-stocks.key', 'utf8'),
-    cert: fs.readFileSync('/etc/ssl/certs/node-stocks.crt', 'utf8')
+    key: fs.readFileSync('/etc/ssl/private/node-selfsigned.key', 'utf8'),
+    cert: fs.readFileSync('/etc/ssl/certs/node-selfsigned.crt', 'utf8')
 }
 
 
