@@ -25,6 +25,11 @@ const err_400_symbol = {
     "message": "Date parameters only available on authenticated route /stocks/authed"
 }
 
+const err_400_symbol2 = {
+    "error": true,
+    "message": "Stcok symbol incorrect format - must be 1-5 letters"
+}
+
 const err_404_authed_symbol = {
     "error": true,
     "message": "No entries available for query symbol for supplied date range"
@@ -67,6 +72,7 @@ module.exports = {
     err_400_stocks,
     err_404_symbol,
     err_400_symbol,
+    err_400_symbol2,
     err_404_authed_symbol,
     err_400_authed_symbol,
     err_403_authed_symbol1,
