@@ -35,7 +35,8 @@ app.use('/user', userRouter)
 
 
 const main = async () => {
-    https.createServer(httpsOptions, app).listen(port)
+    // https.createServer(httpsOptions, app).listen(port)
+    app.listen(3000)
     await StocksDB.connectToDB();
     await StocksDB.createUsersTabel()
     return console.debug(`🚀  Server listening on ${localhost}:${port}`);
