@@ -4,7 +4,7 @@ services:
     image: gcr.io/omar-0/stocks-backend:1.0
     build: .
     restart: on-failure
-    # env_file: .env
+    env_file: .env
     environment: 
       DB_HOST: $DB_HOST
       DB_USER: $DB_USER
@@ -22,7 +22,7 @@ services:
       - dbdata:/data/db
     image: mysql
     restart: always
-    # env_file: .env
+    env_file: .env
     environment: 
       MYSQL_DATABASE: $MYSQL_DATABASE
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD

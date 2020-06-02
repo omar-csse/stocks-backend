@@ -44,8 +44,11 @@ jobs:
     # Build the Docker image
     - name: Build
       run: |
-        export DB_HOST=$DB_HOST DB_USER=$DB_USER DB_PASSWORD=$DB_PASSWORD DB_NAME=$DB_NAME
-        docker-compose build stocks-backend
+        docker build -t $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$IMAGE_TAG \
+        --build-arg DB_HOST=$DB_HOST \
+        --build-arg DB_USER=$DB_USER \
+        --build-arg DB_PASSWORD=$DB_PASSWORD \
+        --build-arg DB_NAME=$DB_NAME .
 
     # Push the Docker image to Google Container Registry
     - name: Publish
