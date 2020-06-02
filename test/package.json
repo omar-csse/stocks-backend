@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "axios": "^0.18.1",
-    "fs": "0.0.1-security",
     "https": "^1.0.0",
     "uuid": "^3.3.2"
   }
