@@ -29,7 +29,7 @@ app.use(express.urlencoded({extended: true}));
 
 
 /* Routes */
-app.use('/', apiRouter)
+app.use('/api', apiRouter)
 app.use('/stocks', stocksRouter)
 app.use('/user', userRouter)
 
