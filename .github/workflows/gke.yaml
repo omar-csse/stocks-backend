@@ -51,6 +51,12 @@ jobs:
         export MYSQL_DATABASE=$MYSQL_DATABASE MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD MYSQL_USER=$MYSQL_USER    
         docker-compose up --build -d
 
+    # wait db to connect
+    - name: Sleep
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '180s'
+
     # Build the Docker image
     - name: Test
       run: |        
