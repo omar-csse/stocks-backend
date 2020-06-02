@@ -50,8 +50,7 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |
-        docker images
-        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:1.0
+        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$IMAGE_TAG
       
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
