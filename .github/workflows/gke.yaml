@@ -13,7 +13,7 @@ env:
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ secrets.GKE_ZONE }}
   IMAGE: ${{ secrets.DEPLOYMENT_NAME }}
-  IMAGE_TAG: 1.0
+  IMAGE_TAG: "1.0"
   REGISTRY_HOSTNAME: gcr.io
   DEPLOYMENT_NAME: ${{ secrets.DEPLOYMENT_NAME }}
 
@@ -50,7 +50,7 @@ jobs:
     # Push the Docker image to Google Container Registry
     - name: Publish
       run: |
-        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:"$IMAGE_TAG"
+        docker push $REGISTRY_HOSTNAME/$GKE_PROJECT/$IMAGE:$IMAGE_TAG
       
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
