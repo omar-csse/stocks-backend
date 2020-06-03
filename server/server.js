@@ -6,6 +6,8 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
+const err = require('../models/errors')
+
 const apiRouter = require('../routes/api/api')
 const stocksRouter = require('../routes/stocks/stocks')
 const userRouter = require('../routes/user/user')
@@ -28,6 +30,9 @@ app.use('/user', userRouter)
 
 /* Handle favicon.ico */
 app.get('/favicon.ico', (req, res) => res.status(204));
+
+/* Hanlde 404 routes */
+app.get('*', (req, res) => res.status(404).send(err.err_404_page))
 
 
 const main = async () => {
