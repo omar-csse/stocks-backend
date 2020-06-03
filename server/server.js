@@ -29,7 +29,7 @@ app.use('/stocks', stocksRouter)
 app.use('/user', userRouter)
 
 /* Hanlde 404 routes */
-app.get('*', (req, res) => res.status(404).send(err.err_404_page))
+app.get('/', (req, res) => res.status(404).send(err.err_404_page))
 
 
 const main = async () => {
