@@ -65,6 +65,11 @@ const err_401_login = {
     "message": "Incorrect email or password"
 }
 
+const err_404_page = {
+    "error": true,
+    "message": "Not Found"  
+}
+
 
 module.exports = {
     err_502_db,
@@ -80,4 +85,5 @@ module.exports = {
     err_400_auth,
     err_409_register,
     err_401_login,
+    err_404_page,
 }
