@@ -6,10 +6,7 @@ class StocksDB {
         this.db = mysql.createPool(this.ConnectionInfo);
         await this.db.getConnection()
             .then(_ => console.log(`💽  StocksDB: is connected`))
-            .catch(err => {
-                console.log(`💽  StocksDB: ${err}`)
-                process.exit(22);
-            })            
+            .catch(err => console.log(`💽  StocksDB: ${err}`))            
     }
 
     static async createUsersTabel() {
